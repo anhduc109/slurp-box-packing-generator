@@ -24,29 +24,4 @@ export default class CoffeeBag {
   getVolume() {
     return this.width * this.height * this.depth;
   }
-
-  getDimension() {
-    let d;
-    switch (this.rotationType) {
-      case RotationType_WHD:
-        d = [this.width, this.height, this.depth];
-        break;
-      case RotationType_HWD:
-        d = [this.height, this.width, this.depth];
-        break;
-      case RotationType_HDW:
-        d = [this.height, this.depth, this.width];
-        break;
-      case RotationType_DHW:
-        d = [this.depth, this.height, this.width];
-        break;
-      case RotationType_DWH:
-        d = [this.depth, this.height, this.width];
-        break;
-      case RotationType_WDH:
-        d = [this.width, this.depth, this.height];
-        break;
-    }
-    return d;
-  }
 }

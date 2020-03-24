@@ -134,3 +134,20 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.form-wrapper {
+  text-align: center;
+}
+
+.submit-btn {
+  padding: 18px 40px;
+  border: 2px solid #6b6b6b;
+  color: #666666;
+  background: white;
+}
+
+.result-text {
+  color: #084d2c;
+  font-size: 20px;
+  font-family: "Cera Pro Black";
+}
