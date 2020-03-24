@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
+
 import NavBar from "./components/NavBar";
 import "./App.css";
-
 import BoxPacking from "./algorithm/index";
 
 function App() {
-  const { CoffeeBag, Packer } = BoxPacking;
-
   const [quantity200g, setQuantity200g] = useState(0);
   const [quantity400g, setQuantity400g] = useState(0);
   const [quantity1000g, setQuantity1000g] = useState(0);
   const [minimumBox, setMinimumBox] = useState(0);
   const [reportGuide, setReportGuide] = useState("");
   const [error, setError] = useState("");
+
+  const { CoffeeBag, Packer } = BoxPacking;
 
   useEffect(() => {
     // Error handling when changing quantity
@@ -31,7 +31,9 @@ function App() {
     evt: React.ChangeEvent<HTMLInputElement>,
     size: number
   ) => {
+    // If input is empty string, value will be 0
     let value = evt.target.value === "" ? "0" : evt.target.value;
+
     if (size === 200) {
       setQuantity200g(parseInt(value));
     }
