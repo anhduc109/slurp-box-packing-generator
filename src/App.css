@@ -146,6 +146,12 @@ input::-webkit-inner-spin-button {
   background: white;
 }
 
+.submit-btn:hover {
+  transition: 0.3s ease;
+  color: #5a5aff;
+  border-color: #5a5aff;
+}
+
 .result-text {
   color: #084d2c;
   font-size: 30px;
