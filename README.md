@@ -14,7 +14,7 @@
   - Each of the current bag's start position will be determined by previous bag's position
   - Conditions for not exceeding box's `width`, `height` or `depth`
   - If there's no place left, continue with the new box
-- Further detail can be found in `pack()` function of [Packer](src/algorithm/Packer)
+- Further detail can be found in `pack()` function of [Packer](src/algorithm/Packer.js)
 
 ### Limitation
 
