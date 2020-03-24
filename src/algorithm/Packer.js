@@ -102,4 +102,23 @@ export default class Packer {
   numberOfBoxUsed() {
     return this.boxes.length;
   }
+
+  report() {
+    console.log("/////////////////////////////////////////////////////////");
+    console.log("//////////////////////Report starts//////////////////////");
+    console.log("/////////////////////////////////////////////////////////");
+    console.log("Number of Box needed:", this.numberOfBoxUsed());
+    console.log("Here is the list of all boxes:");
+    for (let i = 0; i < this.boxes.length; i++) {
+      console.log(
+        "List of placed Coffee Bags in Box number",
+        i + 1,
+        "with detailed starting position"
+      );
+      console.log(this.boxes[i].itemsInBox);
+    }
+    console.log("/////////////////////////////////////////////////////////");
+    console.log("///////////////////////Report ends///////////////////////");
+    console.log("/////////////////////////////////////////////////////////");
+  }
 }

@@ -11,6 +11,7 @@ function App() {
   const [quantity400g, setQuantity400g] = useState(0);
   const [quantity1000g, setQuantity1000g] = useState(0);
   const [minimumBox, setMinimumBox] = useState(0);
+  const [reportGuide, setReportGuide] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -80,7 +81,13 @@ function App() {
     packer.addBag(bagsOf1000g, quantity1000g);
 
     packer.pack();
+
     setMinimumBox(packer.boxes.length);
+    setReportGuide(
+      "Please go to Console Tab in the Developer Tools for a detailed Report"
+    );
+
+    packer.report();
   };
   return (
     <div className="app-wrapper">
@@ -183,6 +190,7 @@ function App() {
             GENERATE
           </button>
           <h3 className="result-text">Minimum Boxes required: {minimumBox}</h3>
+          <p>{reportGuide}</p>
         </form>
       </div>
     </div>
