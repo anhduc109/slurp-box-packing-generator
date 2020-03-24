@@ -130,7 +130,7 @@ input::-webkit-inner-spin-button {
   border-right: none;
   display: inline-block;
   width: 30px;
-  height: 29px;
+  height: 30px;
   -webkit-appearance: none;
   margin: 0;
 }
@@ -148,6 +148,19 @@ input::-webkit-inner-spin-button {
 
 .result-text {
   color: #084d2c;
-  font-size: 20px;
+  font-size: 30px;
   font-family: "Cera Pro Black";
+}
+
+.error-text {
+  color: rgb(231, 8, 8);
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
