@@ -17,9 +17,7 @@ export default class Packer {
 
   sort() {
     this.coffeeBags.sort((a, b) => {
-      if (a.getVolume() > b.getVolume()) {
-        return 1;
-      } else return -1;
+      return b.getVolume() - a.getVolume();
     });
   }
 
@@ -35,46 +33,50 @@ export default class Packer {
       // Add the first coffee bag to the box
       newBox.itemsInBox.push(this.coffeeBags[0]);
 
+      // xTracking: Tracking the position of width in the box
       // yTracking: Tracking the position of height in the box
       // zTracking: Tracking the position of depth in the box
+      let xTracking = 0;
       let yTracking = 0;
       let zTracking = 0;
 
       // A for loop to put coffeeBags into the newly created Box
       // excluding the first item since it has been added
       for (let i = 1; i < this.coffeeBags.length; i++) {
-        // Previous bag in the box
-        let prevBag = { ...newBox.itemsInBox[i - 1] };
-
         // Placing current bag into the box
         let currentBag = { ...this.coffeeBags[i] };
 
+        // prevBag position x + with currentBag width
+        xTracking += currentBag.width;
+
         // New position of the currentBag based on prevBag
         currentBag.position = {
-          x: prevBag.position.x + currentBag.width,
-          y: prevBag.position.y + currentBag.height,
-          z: prevBag.position.z + currentBag.depth
+          x: xTracking,
+          y: yTracking,
+          z: zTracking
         };
 
         // Check the currentBag width if it exceed the box's width
         // If yes, go to the next line of height
         if (currentBag.position.x > newBox.width - currentBag.width) {
           yTracking += currentBag.height;
-          currentBag.position.x = 0;
-        }
+          xTracking = 0;
 
-        currentBag.position.y = yTracking;
+          currentBag.position.x = xTracking;
+          currentBag.position.y = yTracking;
+        }
 
         // Check the currentBag height if it exceed the box's height
         // If yes, go to the next line of depth
         if (currentBag.position.y > newBox.height - currentBag.height) {
           zTracking += currentBag.depth;
           yTracking = 0;
-          currentBag.position.x = 0;
-          currentBag.position.y = 0;
-        }
+          xTracking = 0;
 
-        currentBag.position.z = zTracking;
+          currentBag.position.x = xTracking;
+          currentBag.position.y = yTracking;
+          currentBag.position.z = zTracking;
+        }
 
         // Check the currentBag depth position if it exceed the box's depth
         // If yes, the box is full. Break the for loop
