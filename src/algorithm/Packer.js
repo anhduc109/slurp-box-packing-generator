@@ -31,7 +31,7 @@ export default class Packer {
       let newBox = this.addBox(new Box());
 
       // Add the first coffee bag to the box
-      newBox.itemsInBox.push(this.coffeeBags[0]);
+      newBox.itemsInBox.push({ ...this.coffeeBags[0] });
 
       // xTracking: Tracking the position of width in the box
       // yTracking: Tracking the position of height in the box
@@ -45,6 +45,7 @@ export default class Packer {
       for (let i = 1; i < this.coffeeBags.length; i++) {
         // Placing current bag into the box
         let currentBag = { ...this.coffeeBags[i] };
+        // let currentBag = this.coffeeBags[i];
 
         // prevBag position x + with currentBag width
         xTracking += currentBag.width;
@@ -106,7 +107,7 @@ export default class Packer {
   }
 
   report() {
-    console.clear();
+    // console.clear();
     console.log("/////////////////////////////////////////////////////////");
     console.log("//////////////////////Report starts//////////////////////");
     console.log("/////////////////////////////////////////////////////////");
