@@ -45,10 +45,10 @@ export default class Packer {
       for (let i = 1; i < this.coffeeBags.length; i++) {
         // Placing current bag into the box
         let currentBag = { ...this.coffeeBags[i] };
-        // let currentBag = this.coffeeBags[i];
+        let prevBag = { ...this.coffeeBags[i - 1] };
 
         // prevBag position x + with currentBag width
-        xTracking += currentBag.width;
+        xTracking += prevBag.width;
 
         // New position of the currentBag based on prevBag
         currentBag.position = {
@@ -60,7 +60,7 @@ export default class Packer {
         // Check the currentBag width if it exceed the box's width
         // If yes, go to the next line of height
         if (currentBag.position.x > newBox.width - currentBag.width) {
-          yTracking += currentBag.height;
+          yTracking += prevBag.height;
           xTracking = 0;
 
           currentBag.position.x = xTracking;
@@ -70,7 +70,7 @@ export default class Packer {
         // Check the currentBag height if it exceed the box's height
         // If yes, go to the next line of depth
         if (currentBag.position.y > newBox.height - currentBag.height) {
-          zTracking += currentBag.depth;
+          zTracking += prevBag.depth;
           yTracking = 0;
           xTracking = 0;
 
